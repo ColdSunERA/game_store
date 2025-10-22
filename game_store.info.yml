@@ -1,0 +1,9 @@
+name: Game Store
+type: module
+description: 'Module for managing in-game item listings and sales'
+core_version_requirement: ^11
+package: Custom
+dependencies:
+  - drupal:field
+  - drupal:image
+  - drupal:views

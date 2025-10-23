@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a game listing.
+ *
+ * Available variables:
+ * - listing: The listing entity.
+ * - content: The rendered content array.
+ */
+#}
+<article class="game-listing">
+  <h2>{{ listing.title.value }}</h2>
+  
+  {% if listing.items|length %}
+    <div class="listing-items">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price (Gold)</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for key, item in listing.items %}
+            {% set item_entity = item.entity %}
+            {% if item_entity %}
+              <tr>
+                <td>
+                  {% if item_entity.image.entity %}
+                    <img src="{{ file_url(item_entity.image.entity.uri.value) }}" alt="{{ item_entity.name.value }}" style="max-width: 50px; height: auto;">
+                  {% endif %}
+                  {{ item_entity.name.value }}
+                </td>
+                <td>{{ listing.prices[key].value|default('N/A') }} gold</td>
+                <td>{{ listing.quantities[key].value|default('N/A') }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No items in this listing.</p>
+  {% endif %}
+</article>

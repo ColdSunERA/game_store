@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for game_store module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function game_store_theme($existing, $type, $theme, $path) {
+  return [
+    'game_listing' => [
+      'render element' => 'elements',
+      'template' => 'game-listing',
+      'variables' => [
+        'listing' => NULL,
+        'content' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for game listing templates.
+ */
+function template_preprocess_game_listing(&$variables) {
+  $variables['listing'] = $variables['elements']['#game_listing'];
+  $variables['content'] = [];
+  
+  foreach ($variables['elements'] as $key => $element) {
+    if (strpos($key, '#') !== 0) {
+      $variables['content'][$key] = $element;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+administer game items:
+  title: 'Administer game items'
+  description: 'Create, edit, and delete game items'
+  restrict access: true
+
+administer game listings:
+  title: 'Administer game listings'
+  description: 'Create, edit, and delete game listings'
+  restrict access: true
+
+view game listings:
+  title: 'View game listings'
+  description: 'View published game listings'

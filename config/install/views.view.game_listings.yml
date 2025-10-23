@@ -1,0 +1,88 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - game_store
+id: game_listings
+label: 'Game Listings'
+module: views
+description: 'Display game listings with items'
+tag: ''
+base_table: game_listing
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Game Listings'
+      fields:
+        id:
+          id: id
+          table: game_listing
+          field: id
+          relationship: none
+          label: 'ID'
+        title:
+          id: title
+          table: game_listing
+          field: title
+          relationship: none
+          label: 'Title'
+          settings:
+            link_to_entity: true
+        items:
+          id: items
+          table: game_listing
+          field: items
+          relationship: none
+          label: 'Items'
+          settings:
+            link: true
+        prices:
+          id: prices
+          table: game_listing
+          field: prices
+          relationship: none
+          label: 'Prices (Gold)'
+        quantities:
+          id: quantities
+          table: game_listing
+          field: quantities
+          relationship: none
+          label: 'Quantity'
+      pager:
+        type: full
+        options:
+          items_per_page: 20
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'view game listings'
+      cache:
+        type: tag
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: game_listing
+          field: created
+          order: DESC
+      filters: {  }
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: listings
+      menu:
+        type: normal
+        title: 'Game Listings'
+        description: 'Browse available game items'
+        menu_name: main

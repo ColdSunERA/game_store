@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the game_store module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function game_store_install() {
+  // Create a default view for listings.
+  \Drupal::messenger()->addStatus(t('Game Store module has been installed. Visit /admin/content/game-listings to manage listings.'));
+}
+
+/**
+ * Implements hook_schema().
+ */
+function game_store_schema() {
+  $schema = [];
+  return $schema;
+}
